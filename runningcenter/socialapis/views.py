@@ -6,16 +6,50 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from datetime import datetime
+import requests
 
 def processing_function(request, meetups):
 	sensordata_objects = SensorData.objects.filter(userid = request.user)
 	all_sensor_readings = list(sensordata_objects)
 	print(all_sensor_readings)
+
+	request1 = requests.get('https://api.meetup.com/2/cities')
 	
-	needed_location_x = 51.0
-	needed_location_y = 0.0
-	x_window = 1.0
-	y_window = 1.0
+	needed_location_x = 51.5
+	needed_location_y = -0.5
+	x_window = 0.2
+	y_window = 0.2
+
+	request1 = requests.get('https://api.meetup.com/find/upcoming_events?key=29737346994f1d2c6e15c633a1d79')
+	output_json = request1.json()
+	#output_json['events'][0]['group']['name']
+	for element in output_json['events']:
+		meetup_name_val = element['name']
+		meetup_location_local_date_val = element['local_date']
+		meetup_location_local_time_val = element['local_time']
+		meetup_datetime_val = meetup_location_local_date_val + ' ' + meetup_location_local_time_val
+		meetup_datetime_object = datetime.strptime(meetup_datetime_val, '%Y-%m-%d %H:%M')
+
+		try:
+			metup_address_val = element['venue']['address_1']
+			meetup_city_val = element['venue']['city']
+			meetup_location_lat_val = element['venue']['lat']
+			meetup_location_lon_val = element['venue']['lon']
+		except:
+			metup_address_val = element['group']['name']
+			meetup_city_val = element['group']['localized_location']
+			meetup_location_lat_val = element['group']['lat']
+			meetup_location_lon_val = element['group']['lon']
+
+		Meetups.objects.get_or_create(
+			meetup_name=meetup_name_val,
+			meetup_address=metup_address_val,
+			meetup_time = meetup_datetime_object,
+			meetup_locationx = meetup_location_lat_val,
+			meetup_locationy = meetup_location_lon_val
+			)
+
+    #name, venue address, city, latitude, longitude
 
 	relevant_meetups = Meetups.objects.filter(meetup_locationx__gte = (needed_location_x - x_window)).filter(meetup_locationx__lte = (needed_location_x + x_window)).filter(meetup_locationy__gte = (needed_location_y - y_window)).filter(meetup_locationy__lte = (needed_location_y + y_window))
 	all_meetups = list(relevant_meetups)
