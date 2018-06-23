@@ -11,14 +11,16 @@ import requests
 def processing_function(request, meetups):
 	sensordata_objects = SensorData.objects.filter(userid = request.user)
 	all_sensor_readings = list(sensordata_objects)
-	print(all_sensor_readings)
+	number_of_readings = len(all_sensor_readings)
+	user_xlocation = all_sensor_readings[number_of_readings - 1].locationx
+	user_ylocation = all_sensor_readings[number_of_readings - 1].locationy
 
 	request1 = requests.get('https://api.meetup.com/2/cities')
 	
-	needed_location_x = 51.5
-	needed_location_y = -0.5
-	x_window = 0.2
-	y_window = 0.2
+	needed_location_x = user_xlocation
+	needed_location_y = user_ylocation
+	x_window = 0.5
+	y_window = 0.5
 
 	request1 = requests.get('https://api.meetup.com/find/upcoming_events?key=29737346994f1d2c6e15c633a1d79')
 	output_json = request1.json()
