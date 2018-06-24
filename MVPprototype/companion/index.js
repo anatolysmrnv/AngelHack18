@@ -18,6 +18,11 @@ function sendFile() {
 
 setTimeout(sendFile, 2000);
 
+fetch('http://segamegadrive.pythonanywhere.com/getevents/meetups/?format=json').then(function(response) {
+      return response.text();
+    }).then(function(text) {
+      console.log("Got JSON response from server: " + text); });
+
 // - - - - - - - - - - Settings API - - - - - - - - - - - 
 // Message socket opens
 messaging.peerSocket.onopen = () => {

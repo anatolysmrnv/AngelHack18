@@ -5,7 +5,9 @@
     "appDisplayName": "PrototypeUI",
     "iconFile": "resources/icon.png",
     "wipeColor": "#607d8b",
-    "requestedPermissions": [],
+    "requestedPermissions": [
+      "access_location"
+    ],
     "buildTargets": [
       "higgs"
     ],

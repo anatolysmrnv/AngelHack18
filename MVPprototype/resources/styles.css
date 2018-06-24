@@ -13,28 +13,37 @@
   fill: white;
 }
 
-
-#meetup_name{
+#my_location_x{
   x: 0;
   y: 20;
 }
 
-#meetup_address{
+#my_location_y{
   x: 0;
   y: 40;
 }
 
-#meetup_time{
+#meetup_name{
+  x: 0;
+  y: 60;
+}
+
+#meetup_address{
   x: 0;
   y: 80;
 }
 
-#meetup_location_x{
+#meetup_time{
   x: 0;
   y: 100;
 }
 
-#meetup_location_y{
+#meetup_location_x{
   x: 0;
   y: 120;
+}
+
+#meetup_location_y{
+  x: 0;
+  y: 140;
 }

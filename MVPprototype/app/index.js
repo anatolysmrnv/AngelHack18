@@ -3,6 +3,7 @@ import { inbox } from "file-transfer";
 import { decode } from "cbor";
 import fs from "fs";
 import * as messaging from "messaging";
+import { geolocation } from "geolocation";
 
 
 let meetupName = document.getElementById("meetup_name")
@@ -10,6 +11,24 @@ let meetupAddress = document.getElementById("meetup_address")
 let meetupTime = document.getElementById("meetup_time")
 let meetupLocationX = document.getElementById("meetup_location_x")
 let meetupLocationY = document.getElementById("meetup_location_y")
+
+//- - - - - - - - - - - - wake interval code - - - - - - - - 
+var currentLatitude = document.getElementById("my_location_x");
+var currentLongitude = document.getElementById("my_location_y");
+geolocation.getCurrentPosition(locationSuccess, locationError);
+
+function locationSuccess(position) {
+    console.log("Latitude: " + position.coords.latitude,
+                "Longitude: " + position.coords.longitude);
+    currentLatitude.text = String(position.coords.latitude);
+    currentLongitude.text = String(position.coords.longitude);
+}
+
+function locationError(error) {
+  console.log("Error: " + error.code,
+              "Message: " + error.message);
+}
+//- - - - - - - - - - - - wake interval code - - - - - - - - 
 
 inbox.onnewfile = () => {
   console.log("New file!");
