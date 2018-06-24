@@ -1,0 +1,19 @@
+{
+  "fitbit": {
+    "appUUID": "ba35e5fa-f70f-49b2-b470-ad8f100ffb7f",
+    "appType": "app",
+    "appDisplayName": "Hack",
+    "iconFile": "resources/icon.png",
+    "wipeColor": "#8bc34a",
+    "requestedPermissions": [],
+    "buildTargets": [
+      "higgs",
+      "meson"
+    ],
+    "i18n": {
+      "en": {
+        "name": "Hack"
+      }
+    }
+  }
+}
