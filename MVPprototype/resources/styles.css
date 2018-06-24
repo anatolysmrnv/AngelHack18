@@ -1,0 +1,40 @@
+.dataoutput {
+  font-size: 14;
+  font-family: System-Regular;
+  font-weight: regular;
+  width: 100%;
+  height: 100%;
+  text-length: 64;
+}
+
+#background {
+  width: 100%;
+  height: 100%;
+  fill: white;
+}
+
+
+#meetup_name{
+  x: 0;
+  y: 20;
+}
+
+#meetup_address{
+  x: 0;
+  y: 40;
+}
+
+#meetup_time{
+  x: 0;
+  y: 80;
+}
+
+#meetup_location_x{
+  x: 0;
+  y: 100;
+}
+
+#meetup_location_y{
+  x: 0;
+  y: 120;
+}

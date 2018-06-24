@@ -1,0 +1,18 @@
+{
+  "fitbit": {
+    "appUUID": "987fce37-0285-421f-bcd9-2a4def5de33f",
+    "appType": "app",
+    "appDisplayName": "PrototypeUI",
+    "iconFile": "resources/icon.png",
+    "wipeColor": "#607d8b",
+    "requestedPermissions": [],
+    "buildTargets": [
+      "higgs"
+    ],
+    "i18n": {
+      "en": {
+        "name": "PrototypeUI"
+      }
+    }
+  }
+}

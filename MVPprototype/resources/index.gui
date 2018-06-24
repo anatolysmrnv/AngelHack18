@@ -1,0 +1,8 @@
+<svg class = 'dataoutput'>
+  <rect id="background" />
+  <text id = 'meetup_name'>Meetup1</text>
+  <text id = 'meetup_address'>London</text>
+  <text id = 'meetup_time'>2018-06-23T14:04:19Z</text>
+  <text id = 'meetup_location_x'>51.0123</text>
+  <text id = 'meetup_location_y'>0.0123</text>
+</svg>
